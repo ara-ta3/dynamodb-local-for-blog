@@ -7,29 +7,29 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 @DynamoDBTable(tableName = "users")
 public class User {
 
-    private String id;
+    private int id;
 
     private String name;
 
-    public User(String id, String name) {
+    public User(int id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public User(String id) {
+    public User(int id) {
         this(id, "NoName");
     }
 
     public User() {
-        this("");
+        this(0);
     }
 
     @DynamoDBHashKey
-    public String getId() {
+    public int getId() {
         return this.id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
