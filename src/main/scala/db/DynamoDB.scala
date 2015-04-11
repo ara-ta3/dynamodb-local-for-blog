@@ -3,6 +3,7 @@ package db
 import com.amazonaws.auth.DefaultAWSCredentialsProviderChain
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper
+import com.amazonaws.services.dynamodbv2.{document => aws}
 
 object DynamoDB {
   private val provider = new DefaultAWSCredentialsProviderChain()
@@ -15,4 +16,6 @@ object DynamoDB {
   client.setEndpoint("http://localhost:8000", "", "ap-northeast-1");
 
   val mapper:DynamoDBMapper = new DynamoDBMapper(client);
+
+  val db:aws.DynamoDB = new aws.DynamoDB(client)
 }
